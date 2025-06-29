@@ -9,6 +9,6 @@ const router = express.Router();
 router.post('/add-location', addLocationController);
 router.post('/populate-location', populateLocationController);
 router.post('/remove-location-from-user', removeLocationFromUserController);
-router.post('/get-location-suggestion', getLocationSuggestionController);
+router.get('/get-location-suggestion', getLocationSuggestionController);
 
 export const locationRouter = router;

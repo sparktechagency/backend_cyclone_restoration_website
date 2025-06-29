@@ -5,12 +5,21 @@ import { UserModel, userModel } from '../../model/user.model';
 import { hashMyPassword } from '../../../../../helpers/passwordHashing';
 import { GenerateRandom6DigitNumber } from '../../../../../helpers/GenerateRandom5DigitNumber';
 import { sendOtpViaEmail } from '../../../../../helpers/sendOtp';
+import { validateMissing } from '../../../../../helpers_v2/validate-missing/validateMissing';
 
 export const signUpController = myControllerHandler(async (req, res) => {
-  const { name, email, password, role } = req.body;
-  if (!name || !email || !password || !role) {
-    throw new Error('please enter name, email and password.');
-  }
+  validateMissing(
+    [
+      { name: 'name', naturalName: 'User Name' },
+      { name: 'email', naturalName: 'Email' },
+      { name: 'password', naturalName: 'Password' },
+      { name: 'role', naturalName: 'Role' },
+      { name: 'address', naturalName: 'Address' },
+      { name: 'phone', naturalName: 'Phone Number' },
+    ],
+    req.body
+  );
+  const { name, email, password, role, address } = req.body;
   let userData: any = await UserModel.findOne({ email: email });
   const verifiedAccountExistsWithThisEmail =
     userData && userData.isEmailVerified === true;
@@ -29,6 +38,7 @@ export const signUpController = myControllerHandler(async (req, res) => {
     userData.passwordHash = passwordHash;
     userData.verificationOtp = otp;
     userData.role = role;
+    userData.address = address;
     await userData.save();
   }
   if (noAccountExists) {
@@ -38,6 +48,7 @@ export const signUpController = myControllerHandler(async (req, res) => {
       passwordHash: passwordHash,
       verificationOtp: otp,
       role: role,
+      address: address,
     });
   }
 
@@ -46,7 +57,7 @@ export const signUpController = myControllerHandler(async (req, res) => {
   delete refinedUserData.passwordHash;
   sendResponse(res, {
     code: StatusCodes.OK,
-    message: 'Review Given Successfully',
+    message: 'Otp sent to your email successfully',
     data: {
       userData: refinedUserData,
     },

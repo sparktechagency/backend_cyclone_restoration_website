@@ -24,10 +24,11 @@ const userSchema = new mongoose.Schema(
       required: false,
     },
     passwordHash: { type: String, required: false },
+    address: { type: String, required: false },
     verificationOtp: { type: Number, required: false },
     role: {
       type: String,
-      enum: ['renter', 'owner', 'maintenance_crew'],
+      // enum: ['renter', 'owner', 'maintenance_crew'],
       required: true,
     },
     isBanned: {

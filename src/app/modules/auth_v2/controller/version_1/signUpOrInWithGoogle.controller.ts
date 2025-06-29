@@ -19,7 +19,11 @@ export const signUpOrInWithGoogleController = myControllerHandler(
       });
       const userData3 = userData2.toObject();
       delete userData3.passwordHash;
-      const authToken = await giveAuthenticationToken(email, JWT_SECRET_KEY);
+
+      const tokenData = { userId: userData2.id };
+      let authToken = jwt.sign(tokenData, JWT_SECRET_KEY);
+      authToken = `Bearer ${authToken}`;
+
       return res.status(StatusCodes.CREATED).json({
         success: true,
         message: 'Account Created Successfully',
@@ -27,7 +31,10 @@ export const signUpOrInWithGoogleController = myControllerHandler(
         token: authToken,
       });
     }
-    const authToken = await giveAuthenticationToken(email, JWT_SECRET_KEY);
+
+    const tokenData = { userId: userData.id };
+    let authToken = jwt.sign(tokenData, JWT_SECRET_KEY);
+    authToken = `Bearer ${authToken}`;
     const userData2 = userData.toObject();
     delete userData2.passwordHash;
     const myResponse = {

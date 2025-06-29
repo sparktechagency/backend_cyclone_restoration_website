@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 export const signInWithGoogleController = myControllerHandler(
   async (req, res) => {
     const { credential } = req.body;
-    const decodedData = await jwt.decode(credential, { complete: true });
+    const decodedData = jwt.decode(credential, { complete: true });
     console.log(decodedData?.payload);
     const myResponse = {
       message: 'Review Given Successfully',

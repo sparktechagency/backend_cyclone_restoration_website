@@ -5,15 +5,17 @@ import { UserModel } from '../../model/user.model';
 import { jwt } from '../../../../../utils/others/ForUnsupportedImportSuggestion';
 import { JWT_SECRET_KEY } from '../../../../../data/environmentVariables';
 import { checkMyPassword } from '../../../../../helpers/passwordHashing';
+import { validateMissing } from '../../../../../helpers_v2/validate-missing/validateMissing';
 
 export const loginController = myControllerHandler(async (req, res) => {
   const { email, password } = req.body;
-  if (!email) {
-    throw new Error('please enter email');
-  }
-  if (!password) {
-    throw new Error('please enter password');
-  }
+  validateMissing(
+    [
+      { name: 'email', naturalName: 'Email' },
+      { name: 'password', naturalName: 'Password' },
+    ],
+    req.body
+  );
 
   const userData = await UserModel.findOne({ email: email });
   if (!userData) {
