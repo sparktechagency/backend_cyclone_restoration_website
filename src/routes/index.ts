@@ -33,16 +33,15 @@ import { driverRouter } from '../app/modules/driver/route/driver.route';
 import { carRouter } from '../app/modules/car/route/car.route';
 import { tripRouter } from '../app/modules/trip/route/trip.route';
 import { paymentRouter } from '../app/modules/payment_v2/route/payment.route';
+import { subscriptionRouter } from '../app/modules/subscription/route/subscription.route';
+import { restorationApplicationRouter } from '../app/modules/restoration_application/route/restorationApplication.route';
+import { reportRouter } from '../app/modules/report/route/report.route';
 
 const router = express.Router();
 
 const apiRoutes = [
   {
     path: '/admin',
-    route: AdminRoutes,
-  },
-  {
-    path: '/admin/v2',
     route: adminRouterV2,
   },
   {
@@ -122,6 +121,18 @@ const apiRoutes = [
   {
     path: '/payment',
     route: paymentRouter,
+  },
+  {
+    path: '/subscription',
+    route: subscriptionRouter,
+  },
+  {
+    path: '/restoration-application',
+    route: restorationApplicationRouter,
+  },
+  {
+    path: '/report',
+    route: reportRouter,
   },
 ];
 

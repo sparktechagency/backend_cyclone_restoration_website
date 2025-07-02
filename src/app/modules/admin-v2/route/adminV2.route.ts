@@ -156,7 +156,7 @@ adminRouterV2.get(
   '/get-total-users-total-income-total-users-and-drivers-ratio',
   getTotalUsersTotalIncomeAndUserAndDriverRatioController
 );
-adminRouterV2.get('/create-new-admin', createNewAdminController);
+adminRouterV2.post('/create-new-admin', createNewAdminController);
 adminRouterV2.post('/log-in', adminLogInController);
 adminRouterV2.get('/get-newest-five-users', getNewestFiveUsersController);
 adminRouterV2.get(

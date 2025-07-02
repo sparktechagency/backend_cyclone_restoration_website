@@ -16,6 +16,7 @@ export const signUpOrInWithGoogleController = myControllerHandler(
         name: given_name,
         email: email,
         role: 'user',
+        isEmailVerified: true,
       });
       const userData3 = userData2.toObject();
       delete userData3.passwordHash;

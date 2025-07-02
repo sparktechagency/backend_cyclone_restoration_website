@@ -21,6 +21,9 @@ export const loginController = myControllerHandler(async (req, res) => {
   if (!userData) {
     throw new Error('user does not exist with this email');
   }
+  if (!userData.passwordHash) {
+    throw new Error('sign in with google required');
+  }
   if (userData.isEmailVerified === false) {
     throw new Error(
       'this account is not verified. please verify your account first or sign up again'

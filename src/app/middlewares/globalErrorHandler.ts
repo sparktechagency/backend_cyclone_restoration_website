@@ -117,7 +117,9 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     typeof error === 'string' &&
     (error.includes('not have permission') ||
       error.includes('not admin') ||
-      error.includes('not verified'))
+      error.includes('not verified') ||
+      error.includes('google sign in required') ||
+      error.includes('sign in with google required'))
   ) {
     code = StatusCodes.UNAUTHORIZED;
     message = error;
@@ -125,7 +127,9 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     error instanceof Error &&
     (error.message.includes('not have permission') ||
       error.message.includes('not admin') ||
-      error.message.includes('not verified'))
+      error.message.includes('not verified') ||
+      error.message.includes('google sign in required') ||
+      error.message.includes('sign in with google required'))
   ) {
     code = StatusCodes.UNAUTHORIZED;
     message = error.message;
@@ -138,7 +142,8 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
       error.includes('please turn on') ||
       error.includes('is not requestable') ||
       error.includes('please provide') ||
-      error.includes('missing'))
+      error.includes('missing') ||
+      error.includes('is not provided'))
   ) {
     code = StatusCodes.BAD_REQUEST;
     message = error;
@@ -151,7 +156,8 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
       error.message.includes('please turn on') ||
       error.message.includes('is not requestable') ||
       error.message.includes('please provide') ||
-      error.message.includes('missing'))
+      error.message.includes('missing') ||
+      error.message.includes('is not provided'))
   ) {
     code = StatusCodes.BAD_REQUEST;
     message = error.message;

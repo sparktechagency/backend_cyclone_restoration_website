@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import { sendEncryptedFileController } from './app/modules/send_file/controller/sendEncryptedFile.controller';
 import { APPLICATION_NAME } from './data/environmentVariables';
 import { repetitiveTasks } from './helpers_v2/repeatable_tasks/repeatableasks';
+import { withoutJsonAndUrlEncodedRouter } from './app/modules/without_json_and_urlencoded/route/withoutJsonAndUrlEncoded.route';
 
 const app = express();
 
@@ -26,6 +27,13 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(
+  '/without-json-and-urlencoded',
+  express.raw({ type: 'application/json' }),
+  withoutJsonAndUrlEncodedRouter
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

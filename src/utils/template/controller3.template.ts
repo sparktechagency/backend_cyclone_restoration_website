@@ -3,7 +3,7 @@ import { myControllerHandler } from '../controller/myControllerHandler.utils';
 
 export const myController = myControllerHandler(async (req, res) => {
   const myResponse = {
-    message: 'Review Given Successfully',
+    message: 'Fetched Successful.',
     success: true,
     data: {},
   };

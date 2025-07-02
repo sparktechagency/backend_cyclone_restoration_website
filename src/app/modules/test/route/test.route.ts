@@ -6,6 +6,7 @@ import { step2StripePaymentSaveController } from '../controller/saveStripeCard.c
 import { testSavedCardPaymentController } from '../controller/testSavedCardPayment.controller';
 import { deleteOldOtps } from '../../../../helpers_v2/repeatable_tasks/delete_otps/deleteOtps.helper';
 import { deleteOldOtpsController } from '../controller/deleteOldOtps.controller';
+import { testDummyController } from '../controller/testDummy.controller';
 
 const testRouter = express.Router();
 
@@ -19,4 +20,5 @@ testRouter.post('/step-1-save-stripe-card', step1StripePaymentSaveController);
 testRouter.post('/step-2-save-stripe-card', step2StripePaymentSaveController);
 testRouter.post('/test-saved-card-payment', testSavedCardPaymentController);
 testRouter.post('/delete-old-otps', deleteOldOtpsController);
+testRouter.post('/test-dummy', testDummyController);
 export { testRouter };

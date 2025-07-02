@@ -14,7 +14,7 @@ export const adminLogInController = myControllerHandler(async (req, res) => {
     throw new Error('user does not exist');
   }
   if (!userData.passwordHash) {
-    throw new Error('no password hash');
+    throw new Error('google sign in required');
   }
   await checkMyPassword(password, userData.passwordHash);
   if (userData.role !== 'admin') {

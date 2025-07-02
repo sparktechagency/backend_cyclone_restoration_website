@@ -24,7 +24,7 @@ export const forgotPasswordController = myControllerHandler(
 
     sendResponse(res, {
       code: StatusCodes.OK,
-      message: 'Review Given Successfully',
+      message: 'Fetched Successful.',
       data: {
         refinedData,
       },

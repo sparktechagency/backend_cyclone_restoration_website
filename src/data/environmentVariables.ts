@@ -60,3 +60,7 @@ export const PROFIT_PERCENTAGE_OF_APP = Number(
 export const PERCENTAGE_OF_CANCELLATION_FEE = Number(
   process.env.PERCENTAGE_OF_CANCELLATION_FEE
 );
+export const STRIPE_SIGNING_SECRET = process.env
+  .STRIPE_SIGNING_SECRET as string;
+export const PAYMENT_SUCCESS_URL = process.env.PAYMENT_SUCCESS_URL as string;
+export const PAYMENT_FAILED_URL = process.env.PAYMENT_FAILED_URL as string;

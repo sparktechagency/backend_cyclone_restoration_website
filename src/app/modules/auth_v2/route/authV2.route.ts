@@ -25,6 +25,8 @@ import { forgotPasswordController } from '../controller/version_2/forgotPassword
 import { checkIfOtpIsCorrectController } from '../controller/version_2/checkIfOtpIsCorrect.controller';
 import { changePasswordOfForgotPasswordController } from '../controller/version_2/changePasswordOfForgotPassword.controller';
 import { loginController } from '../controller/version_2/login.controller';
+import { updateProfileController } from '../controller/version_2/updateProfile.controller';
+import { uploadHouseInsuranceDetailsController } from '../controller/version_2/uploadHouseInsuranceDetails.controller';
 
 const authV2Router = express.Router();
 
@@ -64,7 +66,7 @@ authV2Router.post(
   '/vault/fingerprint-verification',
   fingerPrintVerificationController
 );
-authV2Router.post('/update-profile', updateProfileController2);
+authV2Router.post('/update-profile', updateProfileController);
 authV2Router.post('/update-vault-password', updateVaultPasswordController);
 authV2Router.post('/sign-in-with-google', signInWithGoogleController);
 authV2Router.post('/sign-in-with-microsoft', signInWithMicrosoftController);
@@ -72,5 +74,9 @@ authV2Router.post('/sign-up-or-in-with-google', signUpOrInWithGoogleController);
 authV2Router.post(
   '/sign-up-or-in-with-microsoft',
   signUpOrInWithMicrosoftController
+);
+authV2Router.post(
+  '/upload-house-insurance-details',
+  uploadHouseInsuranceDetailsController
 );
 export { authV2Router };

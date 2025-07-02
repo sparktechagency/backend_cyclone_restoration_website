@@ -61,6 +61,26 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    currentSubscriptionId: {
+      type: String,
+      required: false,
+    },
+    gender: {
+      type: String,
+      required: false,
+    },
+    houseInsuranceProviderName: {
+      type: String,
+      required: false,
+    },
+    houseInsurancePolicyNumber: {
+      type: String,
+      required: false,
+    },
+    houseInsuranceDocUrl: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,
