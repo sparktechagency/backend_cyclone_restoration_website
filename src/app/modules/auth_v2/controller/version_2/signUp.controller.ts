@@ -24,7 +24,7 @@ export const signUpController = myControllerHandler(async (req, res) => {
   const verifiedAccountExistsWithThisEmail =
     userData && userData.isEmailVerified === true;
   if (verifiedAccountExistsWithThisEmail) {
-    throw new Error('user already exists');
+    throw new Error('user already exists with this email');
   }
   const unverifiedAccountExistWithThisEmail =
     userData && userData.isEmailVerified === false;
