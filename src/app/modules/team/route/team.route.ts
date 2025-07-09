@@ -3,6 +3,7 @@ import { setTotalNumberOfTeamMembersController } from '../controller/setTeamMemb
 import { getTeamMembersListController } from '../controller/getTeamMembersList.controller';
 import { getTeamDetailsController } from '../controller/getTeamDetails.controller';
 import { getFirstLineOfTeamDashboardController } from '../controller/dashboard/getFirstLineOfTeamDashboard.controller';
+import { getTaskOfATeamController } from '../controller/task/getAssignedTask.controller';
 
 const router = express.Router();
 
@@ -17,5 +18,7 @@ router.get(
   '/get-first-line-of-team-dashboard',
   getFirstLineOfTeamDashboardController
 );
+
+router.get('/get-tasks-of-a-team', getTaskOfATeamController);
 
 export const teamRouter = router;

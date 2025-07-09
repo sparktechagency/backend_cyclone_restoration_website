@@ -19,10 +19,17 @@ export const getFirstLineOfTeamDashboardController = myControllerHandler(
         status: 'completed',
       });
 
+    const dataForClient = [
+      { name: 'Total Task', number: totalNumberOfTasks },
+      { name: 'Completed Task', number: totalNumberOfCompletedTask },
+    ];
+
     sendResponse(res, {
       code: StatusCodes.OK,
       message: 'Fetched Successful',
-      data: {},
+      data: {
+        data: dataForClient,
+      },
     });
   }
 );
