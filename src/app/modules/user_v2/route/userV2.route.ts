@@ -10,6 +10,8 @@ import { searchUserController } from '../controller/searchUser.controller';
 import { populateUserController2 } from '../controller/populateUser2.controller';
 import { addStripeCardStep1Controller } from '../controller/addStripeCardOfUser.controller';
 import { addStripeCardStep2Controller } from '../controller/addStripeCardOfUser2.controller';
+import { getUserListController } from '../controller/version_2/getUserList.controller';
+import { getUserDetailsController } from '../controller/version_2/getUserDetails.controller';
 
 const userRouterV2 = express.Router();
 
@@ -22,4 +24,7 @@ userRouterV2.post('/unban-user', unBanUserController3);
 userRouterV2.get('/search-user/text/:search_text', searchUserController);
 userRouterV2.post('/add-stripe-card-step-1', addStripeCardStep1Controller);
 userRouterV2.post('/add-stripe-card-step-2', addStripeCardStep2Controller);
+userRouterV2.get('/get-user-list', getUserListController);
+userRouterV2.get('/get-user-details', getUserDetailsController);
+
 export { userRouterV2 };

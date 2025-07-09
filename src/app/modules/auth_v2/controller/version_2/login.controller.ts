@@ -41,6 +41,7 @@ export const loginController = myControllerHandler(async (req, res) => {
     message: 'Signed in successful',
     data: {
       authToken: authToken,
+      userData: userData,
     },
   });
 });

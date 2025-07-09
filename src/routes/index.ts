@@ -36,6 +36,8 @@ import { paymentRouter } from '../app/modules/payment_v2/route/payment.route';
 import { subscriptionRouter } from '../app/modules/subscription/route/subscription.route';
 import { restorationApplicationRouter } from '../app/modules/restoration_application/route/restorationApplication.route';
 import { reportRouter } from '../app/modules/report/route/report.route';
+import { messageRouter } from '../app/modules/message/route/message.route';
+import { teamRouter } from '../app/modules/team/route/team.route';
 
 const router = express.Router();
 
@@ -75,7 +77,7 @@ const apiRoutes = [
   { path: '/home', route: homeRouter },
   { path: '/invite', route: invitationRouter },
   { path: '/vault', route: vaultRouter },
-  { path: '/user/v2', route: userRouterV2 },
+  { path: '/user', route: userRouterV2 },
   { path: '/general-info', route: generalInfoRouter },
   { path: '/categories', route: categoriesRouter },
   { path: '/subscription-packages', route: subscriptionPackagesRouter },
@@ -133,6 +135,14 @@ const apiRoutes = [
   {
     path: '/report',
     route: reportRouter,
+  },
+  {
+    path: '/message',
+    route: messageRouter,
+  },
+  {
+    path: '/team',
+    route: teamRouter,
   },
 ];
 

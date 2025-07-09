@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose, { HydratedDocument, InferSchemaType } from 'mongoose';
 import { ar7id } from '../../../../helpers/ar7Id';
+import { number } from 'joi';
 
 const userSchema = new mongoose.Schema(
   {
@@ -28,8 +29,9 @@ const userSchema = new mongoose.Schema(
     verificationOtp: { type: Number, required: false },
     role: {
       type: String,
-      // enum: ['renter', 'owner', 'maintenance_crew'],
+      enum: ['user', 'team', 'admin'],
       required: true,
+      default: 'user',
     },
     isBanned: {
       type: Boolean,
@@ -40,6 +42,7 @@ const userSchema = new mongoose.Schema(
     profilePictureUrl: {
       type: String,
       required: false,
+      default: null,
     },
     stripeCustomerId: {
       type: String,
@@ -81,6 +84,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    totalNumberOfTeamMembers: {
+      type: Number,
+      required: false,
+    },
   },
   {
     timestamps: true,
@@ -89,3 +96,8 @@ const userSchema = new mongoose.Schema(
 
 export const userModel = mongoose.model('users', userSchema);
 export const UserModel = userModel;
+
+type User = InferSchemaType<typeof UserModel.schema>;
+
+// 2. Get the hydrated document type (includes _id, instance methods, etc.)
+export type UserType = HydratedDocument<User>;

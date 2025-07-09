@@ -27,6 +27,7 @@ import { changePasswordOfForgotPasswordController } from '../controller/version_
 import { loginController } from '../controller/version_2/login.controller';
 import { updateProfileController } from '../controller/version_2/updateProfile.controller';
 import { uploadHouseInsuranceDetailsController } from '../controller/version_2/uploadHouseInsuranceDetails.controller';
+import { getUserDetailsWithIdController } from '../controller/version_2/getUserDetailsWithId.controller';
 
 const authV2Router = express.Router();
 
@@ -79,4 +80,6 @@ authV2Router.post(
   '/upload-house-insurance-details',
   uploadHouseInsuranceDetailsController
 );
+authV2Router.get('/get-user-details-with-id', getUserDetailsWithIdController);
+
 export { authV2Router };

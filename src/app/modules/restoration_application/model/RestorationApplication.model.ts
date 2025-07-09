@@ -53,6 +53,17 @@ const mySchema = new mongoose.Schema(
       required: false,
       default: [],
     },
+    assignedTeamId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    status: {
+      type: String,
+      required: false,
+      enum: ['unassigned', 'assigned', 'completed', 'failed'],
+      default: 'unassigned',
+    },
   },
   {
     timestamps: true,
